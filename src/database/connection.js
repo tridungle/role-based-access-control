@@ -1,6 +1,6 @@
-import mongoose from 'mongoose';
-import { serverLogger } from '@helpers';
-import config from '@config';
+import mongoose from "mongoose";
+import { serverLogger } from "@helpers";
+import config from "@config";
 class MongoConnection {
   constructor() {
     this.subscribeConnectionEmmitter();
@@ -8,41 +8,41 @@ class MongoConnection {
 
   connect = () => {
     if (!config.database.mongodb.URI) {
-      serverLogger.error('MONGODB_URI not specified.');
+      serverLogger.error("MONGODB_URI not specified.");
       process.exit();
     }
 
     mongoose
       .connect(config.database.mongodb.URI, config.database.mongodb.OPTIONS)
       .catch(error => {
-        serverLogger.error(`---> ${error}`);
+        serverLogger.error(`${error}`);
       });
   };
 
   subscribeConnectionEmmitter = () => {
     const db = mongoose.connection;
-    db.on('connecting', () => {
-      serverLogger.log('Connecting to MongoDB...');
+    db.on("connecting", () => {
+      serverLogger.info("Connecting to MongoDB...");
     });
 
-    db.on('error', err => {
+    db.on("error", err => {
       serverLogger.error(`MongoDB connection error: ${err}`);
       mongoose.disconnect();
     });
 
-    db.on('connected', () => {
-      serverLogger.info('Connected to MongoDB!');
+    db.on("connected", () => {
+      serverLogger.info("Connected to MongoDB!");
     });
 
-    db.once('open', () => {
-      serverLogger.info('MongoDB connection opened!');
+    db.once("open", () => {
+      serverLogger.info("MongoDB connection opened!");
     });
 
-    db.on('reconnected', () => {
-      serverLogger.info('MongoDB reconnected!');
+    db.on("reconnected", () => {
+      serverLogger.info("MongoDB reconnected!");
     });
 
-    db.on('disconnected', () => {
+    db.on("disconnected", () => {
       serverLogger.error(
         `MongoDB disconnected! Reconnecting in ${config.database.mongodb
           .RECONNECT_TIMEOUT / 1000}s...`

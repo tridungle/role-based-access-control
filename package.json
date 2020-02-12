@@ -1,8 +1,8 @@
 {
-  "name": "node-es6-boilerplate",
-  "version": "0.1",
-  "description": "The minimal Node.js with Babel Setup",
-  "repository": "https://github.com/tridungle/node-es6-boilerplate.git",
+  "name": "role-based-access-control",
+  "version": "0.1.0",
+  "description": "Role-Based Access Control in NodeJS App",
+  "repository": "https://github.com/tridungle/role-based-access-control.git",
   "main": "index.js",
   "scripts": {
     "watch": "nodemon ./src/bin/server",

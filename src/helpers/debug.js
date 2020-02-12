@@ -15,22 +15,22 @@ class ServerLog {
   }
 
   error = message => {
-    const debug = debugLib('server:error');
+    const debug = debugLib(`server:error [${new Date()}]`);
     debug(chalk.red(message));
   };
 
   info = message => {
-    const debugInfo = debugLib('server:info');
+    const debugInfo = debugLib(`server:info [${new Date()}]`);
     debugInfo(chalk.blue(message));
   };
 
   log = message => {
-    const debug = debugLib('server:log');
+    const debug = debugLib(`server:log [${new Date()}]`);
     debug(chalk.gray(message));
   };
 
   debug = message => {
-    const debug = debugLib('server:debug');
+    const debug = debugLib(`server:debug [${new Date()}]`);
     debug(chalk.green(message));
   };
 

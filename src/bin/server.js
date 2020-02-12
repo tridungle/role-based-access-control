@@ -61,7 +61,7 @@ class Server {
     const addr = this.server.address();
     const bind =
       typeof addr === 'string' ? 'pipe ' + addr : 'port ' + addr.port;
-    serverLogger.log(`Listening on ${bind}`);
+    serverLogger.info(`Listening on ${bind}`);
   };
 }
 

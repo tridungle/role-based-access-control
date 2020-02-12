@@ -34,7 +34,6 @@ export default {
       URI: process.env.MONGODB_URI || 'mongodb://localhost:27017/boilerplate',
       OPTIONS: {
         retryWrites: true,
-        autoReconnect: true,
         useNewUrlParser: true,
         useUnifiedTopology: true
       },
